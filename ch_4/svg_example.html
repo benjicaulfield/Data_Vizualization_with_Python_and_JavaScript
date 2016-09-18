@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    /*svg#chart {*/
+      /*background: lightgray;*/
+    /*}*/
+
+    #chart circle {
+      fill: lightblue;
+    }
+
+    #chart line {
+      stroke: #555;
+      stroke-width: 2;
+    }
+
+    #chart rect {
+      stroke: red;
+      fill: white;
+    }
+
+    #chart polygon {
+      fill: green;
+    }
+
+    #chart {
+      background: #eee;
+      font-family: sans-serif;
+    }
+
+    #chart text {
+      font-size: 16px;
+    }
+
+    #chart text#title {
+      font-size: 18px;
+    }
+
+    #chart path {
+      stroke: red;
+      fill: none;
+    }
+
+    #chart2 {
+      background: #eee;
+    }
+
+    #chart2 path {
+      stroke: red;
+      fill: none;
+    }
+
+    #chart3 {
+      background: #eee;
+    }
+
+    #chart3 rect {
+      fill: blue;
+    }
+
+    #chart4 {
+      background: #eee;
+    }
+
+    #chart5 {
+      background: #eee;
+    }
+
+    #chart5 circle {
+      opacity: 0.33;
+    }
+  </style>
+</head>
+<body>
+
+<svg id="chart" width="300" height="225">
+  <circle r="15" cx="100" cy="50"></circle>
+  <line x1="20" y1="20" x2="20" y2="130"></line>
+  <line x1="20" y1="130" x2="280" y2="130"></line>
+  <rect x="240" y="5" height="30" width="55"></rect>
+  <polygon points="210,100, 230,100, 220, 80"></polygon>
+  <path d="M20 130L60 70L110 100L160 45"></path>
+
+  <text id="title" text-anchor="middle" x="150" y="20">
+    A Dummy Chart
+  </text>
+  <text x="20" y="20"transform="rotate(-90, 20, 20)" text-anchor="end" dy="0.71em">
+    y axis label
+  </text>
+</svg>
+
+<svg id="chart2" width="300" height="150">
+  <path d="M40 40 A30 40 0 0 1 80 80
+           A50 50 0 0 1 160 80
+           A30 30 0 1 1 190 80"></path>
+</svg>
+
+<svg id="chart3" width="300" height="150">
+  <rect width="20" height="40" transform="translate(60, 55)"></rect>
+  <rect width="20" height="40" transform="translate(120, 55), rotate(45)"></rect>
+  <rect width="20" height="40" transform="translate(180, 55), scale(0.5)"></rect>
+  <rect width="20" height="40" transform="translate(240, 55), scale(0.5), rotate(45)"></rect>
+</svg>
+
+<svg id="chart4" width="300" height="150">
+  <g id="shapes" transform="translate(150, 75), scale(0.75), rotate(90)">
+    <circle cx="50" cy="0" r="25" fill="red"></circle>
+    <rect x="30" y="10" width="40" height="20" fill="blue"></rect>
+    <path d="M-20 -10L50 -10L10 60Z" fill="green"></path>
+    <circle r="10" fill="yellow"></circle>
+  </g>
+</svg>
+
+<svg id="chart5" width="300" height="150">
+  <g transform="translate(150, 75)">
+    <circle cx="0" cy="-20" r="30" fill="red"></circle>
+    <circle cx="17.3" cy="10" r="30" fill="green"></circle>
+    <circle cx="-17.3" cy="10" r="30" fill="blue"></circle>
+  </g>
+</svg>
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
