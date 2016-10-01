@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+<h2>{{ heading }}</h2>
+<ul>
+  {% for winner in winners %}
+  <li><a href="{{ 'http://wikipedia.com/wiki/' + winner.name }}">{{ winner.name }}</a>
+    {{ ', category: ' + winner.category }}
+  </li>
+  {% endfor %}
+</ul>
+
+</body>
+</html>
