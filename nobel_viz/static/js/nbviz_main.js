@@ -18,7 +18,15 @@
         if(error) {
             return console.warn(error);
         }
-        //STORE OUR COUNTRY-
+        //STORE OUR COUNTRY-DATA DATASET
+        nbviz.data.countryData = countryData;
+        // MAKE OUR FILTER AND ITS DIMENSIONS
+        nbviz.makeFilterAndDimensions(winnersData);
+        // INITIALIZE MENU AND MAP
+        nbviz.initMenu();
+        nbviz.initMap(worldMap, countryData);
+        // TRIGGER UPDATE WITH FULL WINNERS' DATASET
+        nbviz.onDataChange();
     }
 
 }(window.nbviz = window.nbviz || {}));

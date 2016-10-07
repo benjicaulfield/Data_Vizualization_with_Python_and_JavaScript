@@ -42,7 +42,19 @@
     };
 
     nbviz.makeFilterAndDimensions = function(winnersData) {
-        // ...
+        // ADD OUR FILTER AND CREATE CATEGORY DIMENSIONS
+        nbviz.filter = crossfilter(winnersData);
+        nbviz.countryDim = nbviz.filter.dimension(function(o) {
+            return o.country;
+        });
+
+        nbviz.categoryDim = nbviz.filter.dimension(function(o) {
+            return o.category;
+        });
+
+        nbviz.genderDim = nbviz.filter.dimension(function(o) {
+            return o.gender;
+        });
     };
 
     nbviz.filterByCountries = function(countryNames) {
@@ -54,7 +66,28 @@
     };
 
     nbviz.getCountryData = function() {
-        // ...
+        var countryGroups = nbviz.countryDim.group().all();
+
+        // make main data-ball
+        var data = countryGroups.map( function(c) {
+            var cData = nbviz.data.countryData[c.key];
+            var value = c.value;
+            // if per capita value then divide by pop. size
+            if(nbviz.valuePerCapita) {
+                value = value / cData.population;
+            }
+            return {
+                key: c.key, // e.g. Japan
+                value: value, // e.g., 19 (prizes)
+                code: cData.alpha3Code // e.g., JPN
+            };
+        })
+            .sort(function(a, b) {
+                return b.value - a.value; // descending
+            });
+
+        return data;
+
     };
 
     nbviz.onDataChange = function() {
